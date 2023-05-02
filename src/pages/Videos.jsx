@@ -2,8 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import VideoCard from '../components/VideoCard';
-import { search } from '../api/youtube';
-import FakeYoutube from '../api/\bfakeYoutube';
+import Youtube from '../api/youtube';
 
 export default function Videos() {
   const { keyword } = useParams(); // 검색키워드
@@ -12,7 +11,7 @@ export default function Videos() {
     error,
     data: videos,
   } = useQuery(['videos', keyword], () => {
-    const youtube = new FakeYoutube();
+    const youtube = new Youtube();
     return youtube.search(keyword);
   });
   return (
