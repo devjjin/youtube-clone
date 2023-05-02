@@ -7,7 +7,6 @@ export default function SearchHeader() {
   const [text, setText] = useState('');
   const navigate = useNavigate();
   const handleSubmit = (e) => {
-    console.log(text);
     e.preventDefault();
     navigate(`/videos/${text}`); // 검색키워드 경로로 이동
   };
