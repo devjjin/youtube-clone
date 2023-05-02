@@ -1,10 +1,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import ChannelInfo from '../components/ChannelInfo';
 
 export default function VideoDetail() {
   const {
     state: { video },
   } = useLocation();
+  const { title, channelId, channelTitle, description } = video.snippet;
   return (
     <section>
       <article>
@@ -17,6 +19,12 @@ export default function VideoDetail() {
           src={`http://www.youtube.com/embed/${video.id}`}
           frameborder='0'
         />
+        <div>
+          <h1>{title}</h1>
+          {/* Chaneel정보 컴포넌트 */}
+          <ChannelInfo id={channelId} name={channelTitle} />
+          <pre>{description}</pre>
+        </div>
       </article>
     </section>
   );
